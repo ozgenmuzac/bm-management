@@ -18,7 +18,16 @@ module.exports = {
     ],
 
     module: {
-        loaders: [],
+        loaders: [
+            { test: /\.js?$/, exclude: /node_modules/, loader: 'babel-loader' }, // to transform JSX into JS
+            { test: /\.less?$/,
+                use: [
+                    'style-loader',
+                    { loader: 'css-loader', options: { modules: true ,localIdentName: '[name]--[local]--[hash:base64:5]'} },
+                    "less-loader",
+                ]
+            }
+        ],
     },
 
     resolve: {

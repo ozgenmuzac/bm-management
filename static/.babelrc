@@ -1,4 +1,14 @@
 {
     "presets": ["es2015", "react", "stage-2"],
-    "plugins": ["transform-decorators-legacy"]
+    "plugins": [
+      ["transform-decorators-legacy"],
+      ["react-css-modules",
+       {"filetypes": {
+        ".less": {
+          "syntax": "postcss-less"
+        }
+       },
+        "generateScopedName": "[name]--[local]--[hash:base64:5]"
+      }]
+    ]
 }

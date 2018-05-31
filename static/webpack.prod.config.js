@@ -20,9 +20,4 @@ config.plugins = config.plugins.concat([
     }),
 ]);
 
-// Add a loader for JS files
-config.module.loaders.push(
-  { test: /\.js?$/, exclude: /node_modules/, loader: 'babel-loader' }
-)
-
 module.exports = config;
