@@ -1,4 +1,4 @@
-"""survey URL Configuration
+"""bmom URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -16,9 +16,9 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from survey.question.api_v1.urls import question_router
+from bmom.question.api_v1.urls import question_router
 
-from survey.question.views import QuestionsView
+from bmom.question.views import QuestionsView
 
 api_urls = [
     url(r'^question/', include(question_router.urls)),
@@ -27,5 +27,5 @@ api_urls = [
 urlpatterns = [
     url(r'^api-1.0/', include(api_urls)),
     url(r'^admin/', admin.site.urls),
-    url(r'^survey/', QuestionsView.as_view()),
+    url(r'^bmom/', QuestionsView.as_view()),
 ]
