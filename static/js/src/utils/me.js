@@ -4,7 +4,7 @@ const authTokenKey = 'accessToken';
 const cookies = new Cookies();
 
 export function setAuthCookie(token) {
-    cookies.set(authTokenKey, token);
+    cookies.set(authTokenKey, token, {path: '/'});
 }
 
 export function getAuthToken() {

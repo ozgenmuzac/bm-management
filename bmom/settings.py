@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'webpack_loader',
     # our own apps
     'bmom.account',
-    'bmom.question',
+    'bmom.utils',
 ]
 
 MIDDLEWARE = [

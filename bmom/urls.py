@@ -17,9 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from bmom.account.api_v1.urls import account_router
-from bmom.question.api_v1.urls import question_router
 
-from bmom.question.views import QuestionsView
+from bmom.utils.views import ReactAppLoaderView
 
 api_urls = [
     url(r'^account/', include(account_router)),
@@ -29,5 +28,7 @@ urlpatterns = [
     url(r'^api-1.0/', include(api_urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
-    url(r'^management/', QuestionsView.as_view()),
+    url(r'^management/', ReactAppLoaderView.as_view()),
+    url(r'^member-management/', ReactAppLoaderView.as_view()),
+    url(r'^login/', ReactAppLoaderView.as_view()),
 ]
