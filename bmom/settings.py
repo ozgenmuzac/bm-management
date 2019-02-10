@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'webpack_loader',
     # our own apps
     'bmom.account',
+    'bmom.member',
     'bmom.utils',
 ]
 

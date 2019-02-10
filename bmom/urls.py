@@ -17,11 +17,13 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from bmom.account.api_v1.urls import account_router
+from bmom.member.api_v1.urls import member_router
 
 from bmom.utils.views import ReactAppLoaderView
 
 api_urls = [
     url(r'^account/', include(account_router)),
+    url(r'^member/', include(member_router.urls)),
 ]
 
 urlpatterns = [
