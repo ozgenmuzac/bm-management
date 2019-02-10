@@ -38,8 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
+    'oauth2_provider',
     'rest_framework',
-    'webpack_loader', 'bmom.question',
+    'webpack_loader',
+    # our own apps
+    'bmom.account',
+    'bmom.question',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +84,7 @@ WSGI_APPLICATION = 'bmom.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'survey',
+        'NAME': 'bmo',
         'HOST': '127.0.0.1',
         'USER': 'mysqluser',
         'PASSWORD': 'test',
@@ -110,11 +115,14 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
+    # Use Django's standard `django.contrib.account` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+    )
 }
 
 WEBPACK_LOADER = {

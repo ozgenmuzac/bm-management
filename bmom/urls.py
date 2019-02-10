@@ -16,16 +16,18 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from bmom.account.api_v1.urls import account_router
 from bmom.question.api_v1.urls import question_router
 
 from bmom.question.views import QuestionsView
 
 api_urls = [
-    url(r'^question/', include(question_router.urls)),
+    url(r'^account/', include(account_router)),
 ]
 
 urlpatterns = [
     url(r'^api-1.0/', include(api_urls)),
     url(r'^admin/', admin.site.urls),
-    url(r'^bmom/', QuestionsView.as_view()),
+    url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    url(r'^management/', QuestionsView.as_view()),
 ]

@@ -11,4 +11,7 @@ config.plugins = config.plugins.concat([
     new BundleTracker({filename: './webpack-stats.json'}),
 ]);
 
+config.devtool = 'source-map';
+
 module.exports = config;
+
