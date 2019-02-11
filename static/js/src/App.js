@@ -8,6 +8,7 @@ import Column from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 import './main.less';
+import Member from './member/member.react-component';
 import MemberManagement from './member/member-management.react-component';
 import MemberStore from './member/member-management.mobx-store';
 import Login from './login/login.react-component';
@@ -28,7 +29,7 @@ export default class App extends React.Component {
                     <Container>
                         <Row>
                             <Column>
-                                <Link to="/member-management">Member Management</Link>
+                                <Link to="/members">Member Management</Link>
                             </Column>
                             <Column>
                                 <Link to="/login">Login Page</Link>
@@ -36,6 +37,7 @@ export default class App extends React.Component {
                         </Row>
                         <Row>
                             <MemberManagement store={ memberStore }/>
+                            <Member />
                             <Route path='/login' render={() => <Login store={ loginStore }/> } />
                         </Row>
                     </Container>

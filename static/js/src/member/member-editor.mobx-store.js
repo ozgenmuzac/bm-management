@@ -4,14 +4,30 @@ import { action, observable } from 'mobx';
 import api from '../utils/api';
 
 export default class NewMemberStore {
+    @observable id = null;
     @observable name = '';
     @observable surname = '';
     @observable email = '';
 
+    constructor(member = null) {
+        if(member) {
+            this.setMemberProp(member)
+        }
+    }
+
+    @autobind
+    @action
+    setMemberProp(member) {
+        this.id = member.id;
+        this.name = member.name;
+        this.surname = member.surname;
+        this.email = member.email;
+    }
+
+
     @autobind
     @action
     onNameChange(event) {
-        console.log(event.target.value);
         this.name = event.target.value;
     }
 
@@ -27,10 +43,18 @@ export default class NewMemberStore {
         this.email = event.target.value;
     }
 
+    get apiUrl() {
+        if(this.id) {
+            return `/member/${this.id}/`;
+        }
+        return '/member/';
+    }
+
     @autobind
     onSubmit() {
         event.preventDefault();
-        return api.post('/member/', {
+        const apiCall = this.id ? api.patch : api.post;
+        return apiCall(this.apiUrl, {
             name: this.name,
             surname: this.surname,
             email: this.email

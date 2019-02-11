@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^management/', ReactAppLoaderView.as_view()),
-    url(r'^member-management/', ReactAppLoaderView.as_view()),
+    url(r'^members/', ReactAppLoaderView.as_view()),
+    url(r'^member/(?P<member_id>[0-9]+)/', ReactAppLoaderView.as_view()),
     url(r'^login/', ReactAppLoaderView.as_view()),
 ]

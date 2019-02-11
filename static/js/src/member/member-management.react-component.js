@@ -12,12 +12,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import authRequiredComponent from '../utils/auth.react-component';
-import NewMember from './new-member.react-component';
-import NewMemberStore from './new-member.mobx-store';
+import NewMember from './member-editor.react-component';
+import NewMemberStore from './member-editor.mobx-store';
 
-const MemberAction = ({member, onEditClick, onDelete}) => {
+const MemberAction = ({member, onEdit, onDelete}) => {
     const onDeleteClick = () => {
         onDelete(member.id);
+    };
+    const onEditClick = () => {
+        onEdit(member.id);
     };
     return (
         <div className="flex-row">
@@ -27,11 +30,12 @@ const MemberAction = ({member, onEditClick, onDelete}) => {
     )
 };
 
-@authRequiredComponent('/member-management')
+@authRequiredComponent('/members')
 @observer
 export default class MemberManagement extends Component {
     static propTypes = {
         store: PropTypes.object.isRequired,
+        history: PropTypes.object.isRequired,
     };
 
     constructor(props) {
@@ -43,6 +47,11 @@ export default class MemberManagement extends Component {
     onMemberCreate(){
         this.props.store.onCreateChange();
         this.props.store.getMembers();
+    }
+
+    @autobind
+    onMemberEdit(memberId) {
+        this.props.history.push(`/member/${memberId}/`);
     }
 
     render() {
@@ -81,7 +90,9 @@ export default class MemberManagement extends Component {
                                         <td>{ member.name }</td>
                                         <td>{ member.surname }</td>
                                         <td>{ member.email }</td>
-                                        <td><MemberAction member={ member } onDelete={ store.onDelete }/></td>
+                                        <td><MemberAction member={ member }
+                                                          onDelete={ store.onDelete }
+                                                          onEdit={ this.onMemberEdit }/></td>
                                     </tr>
                                 ))}
                             </tbody>

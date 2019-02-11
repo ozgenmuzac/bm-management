@@ -8,9 +8,9 @@ export default function authRequiredComponent(path, redirectUrl = '/login') {
         class AuthRequiredHOC extends Component {
             render() {
                 return (
-                    <Route path={ path }render={ () =>
+                    <Route path={ path } render={ (props) =>
                         isAuthenticated() ? (
-                            <WrappedComponent {...this.props} />
+                            <WrappedComponent {...this.props} {...props} />
                         ) : (
                             <Redirect to={ redirectUrl } />
                         )

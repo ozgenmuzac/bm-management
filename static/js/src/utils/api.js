@@ -25,6 +25,9 @@ const api = {
     post: (url, data = {}, config = {}) => {
         return axios.post(api1url(url), data, getRequestHeader(config));
     },
+    patch: (url, data = {}, config = {}) => {
+        return axios.patch(api1url(url), data, getRequestHeader(config));
+    },
     delete: (url, config = {}) => {
         return axios.delete(api1url(url), getRequestHeader(config));
     }

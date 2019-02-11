@@ -6,7 +6,7 @@ import { observer } from 'mobx-react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-import './new-member.less'
+import './member-editor.less'
 
 @observer
 export default class NewMember extends Component {
