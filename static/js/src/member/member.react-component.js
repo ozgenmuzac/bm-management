@@ -13,7 +13,7 @@ import MemberStore from './member.mobx-store';
 import authRequiredComponent from '../utils/auth.react-component';
 import NewMember from './member-editor.react-component';
 
-@authRequiredComponent('/member/:id([0-9]+)')
+@authRequiredComponent('/member/:id([0-9]+)/')
 @observer
 export default class Member extends Component {
     static propTypes = {

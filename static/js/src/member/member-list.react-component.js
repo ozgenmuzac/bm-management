@@ -14,6 +14,7 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import authRequiredComponent from '../utils/auth.react-component';
 import NewMember from './member-editor.react-component';
 import NewMemberStore from './member-editor.mobx-store';
+import './member-list.less';
 
 const MemberAction = ({member, onEdit, onDelete}) => {
     const onDeleteClick = () => {
@@ -30,9 +31,9 @@ const MemberAction = ({member, onEdit, onDelete}) => {
     )
 };
 
-@authRequiredComponent('/members')
+@authRequiredComponent('/members/')
 @observer
-export default class MemberManagement extends Component {
+export default class MemberList extends Component {
     static propTypes = {
         store: PropTypes.object.isRequired,
         history: PropTypes.object.isRequired,
@@ -49,6 +50,10 @@ export default class MemberManagement extends Component {
         this.props.store.getMembers();
     }
 
+    componentDidMount() {
+        this.props.store.getMembers();
+    }
+    
     @autobind
     onMemberEdit(memberId) {
         this.props.history.push(`/member/${memberId}/`);
@@ -72,7 +77,7 @@ export default class MemberManagement extends Component {
                     <Row className="flex-row-reverse">
                         <Button onClick={ store.onCreateChange }>Create new</Button>
                     </Row>
-                    <Row>
+                    <Row styleName="memberList">
                         <Table bordered>
                             <thead>
                                 <tr>

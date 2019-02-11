@@ -17,7 +17,7 @@ export default class Login extends Component {
         const { store } = this.props;
         return (
             store.isAuthenticated ?
-                (<Redirect to='/member-management/' />) :(
+                (<Redirect to='/members/' />) :(
                 <Container>
                     <Row className="justify-content-md-center">
                         <Form onSubmit={ store.onSubmit }>

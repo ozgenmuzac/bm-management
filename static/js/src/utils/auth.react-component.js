@@ -3,7 +3,7 @@ import { Redirect, Route } from 'react-router-dom';
 
 import isAuthenticated from './me';
 
-export default function authRequiredComponent(path, redirectUrl = '/login') {
+export default function authRequiredComponent(path, redirectUrl = '/login/') {
     return function wrapWithAuthentication(WrappedComponent) {
         class AuthRequiredHOC extends Component {
             render() {

@@ -9,8 +9,8 @@ import Row from 'react-bootstrap/Row';
 
 import './main.less';
 import Member from './member/member.react-component';
-import MemberManagement from './member/member-management.react-component';
-import MemberStore from './member/member-management.mobx-store';
+import MemberList from './member/member-list.react-component';
+import MemberStore from './member/member-list.mobx-store';
 import Login from './login/login.react-component';
 import LoginStore from './login/login.mobx-store';
 
@@ -27,18 +27,15 @@ export default class App extends React.Component {
             <div>
                 <BrowserRouter>
                     <Container>
-                        <Row>
+                        <Row styleName="header">
                             <Column>
-                                <Link to="/members">Member Management</Link>
-                            </Column>
-                            <Column>
-                                <Link to="/login">Login Page</Link>
+                                <Link to="/members/">Members List</Link>
                             </Column>
                         </Row>
-                        <Row>
-                            <MemberManagement store={ memberStore }/>
+                        <Row styleName="body">
+                            <MemberList store={ memberStore }/>
                             <Member />
-                            <Route path='/login' render={() => <Login store={ loginStore }/> } />
+                            <Route path='/login/' render={() => <Login store={ loginStore }/> } />
                         </Row>
                     </Container>
                 </BrowserRouter>

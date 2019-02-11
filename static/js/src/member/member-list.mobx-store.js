@@ -8,10 +8,6 @@ export default class MemberStore {
     @observable page = 1;
     @observable isCreateActive = false;
 
-    constructor() {
-        this.getMembers();
-    }
-
     @autobind
     @action
     getMembers() {
