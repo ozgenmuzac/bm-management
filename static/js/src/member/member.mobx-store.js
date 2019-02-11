@@ -8,7 +8,7 @@ import NewMemberStore from './member-editor.mobx-store';
 export default class MemberStore {
     @observable member;
     @observable isLoading = true;
-    @observable memberEditStore;
+    @observable memberEditorStore;
 
     constructor(memberId) {
         this.getMember(memberId);
@@ -19,7 +19,7 @@ export default class MemberStore {
     getMember(memberId) {
         api.get(`/member/${memberId}/`).then(action(response => {
             this.member = response.data;
-            this.memberEditStore = new NewMemberStore(this.member);
+            this.memberEditorStore = new NewMemberStore(this.member);
             this.isLoading = false;
         }));
     }

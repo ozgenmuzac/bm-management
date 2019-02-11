@@ -3,7 +3,7 @@ import { action, observable } from 'mobx';
 
 import api from '../utils/api';
 
-export default class NewMemberStore {
+export default class MemberEditorStore {
     @observable id = null;
     @observable name = '';
     @observable surname = '';

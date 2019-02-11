@@ -9,7 +9,7 @@ import Form from 'react-bootstrap/Form';
 import './member-editor.less'
 
 @observer
-export default class NewMember extends Component {
+export default class MemberEditor extends Component {
     static propTypes = {
         store: PropTypes.object.isRequired,
         onSubmitCallback: PropTypes.func,

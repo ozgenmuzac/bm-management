@@ -12,8 +12,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import authRequiredComponent from '../utils/auth.react-component';
-import NewMember from './member-editor.react-component';
-import NewMemberStore from './member-editor.mobx-store';
+import MemberEditor from './member-editor.react-component';
+import MemberEditorStore from './member-editor.mobx-store';
 import './member-list.less';
 
 const MemberAction = ({member, onEdit, onDelete}) => {
@@ -41,7 +41,7 @@ export default class MemberList extends Component {
 
     constructor(props) {
         super(props);
-        this.newMemberStore = new NewMemberStore();
+        this.newMemberStore = new MemberEditorStore();
     }
 
     @autobind
@@ -68,9 +68,9 @@ export default class MemberList extends Component {
                         <Modal.Title>Create new member</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <NewMember store={ this.newMemberStore }
-                                   onSubmitCallback={ this.onMemberCreate }
-                                   onCancelCallback={ store.onCreateChange }/>
+                        <MemberEditor store={ this.newMemberStore }
+                                      onSubmitCallback={ this.onMemberCreate }
+                                      onCancelCallback={ store.onCreateChange }/>
                     </Modal.Body>
                 </Modal>
                 <Container>
