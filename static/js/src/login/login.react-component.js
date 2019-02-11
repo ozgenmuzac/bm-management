@@ -21,18 +21,24 @@ export default class Login extends Component {
                 <Container>
                     <Row className="justify-content-md-center">
                         <Form onSubmit={ store.onSubmit }>
-                            <Form.Control
-                                type="text"
-                                name="Username"
-                                value={ store.username }
-                                onChange={ store.onUsernameChange }
-                            />
-                            <Form.Control
-                                type="password"
-                                name="Password"
-                                value={ store.password }
-                                onChange={ store.onPasswordChange }
-                            />
+                            <Form.Label>Username</Form.Label>
+                            <Form.Group>
+                                <Form.Control
+                                    type="text"
+                                    name="Username"
+                                    value={ store.username }
+                                    onChange={ store.onUsernameChange }
+                                />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control
+                                    type="password"
+                                    name="Password"
+                                    value={ store.password }
+                                    onChange={ store.onPasswordChange }
+                                />
+                            </Form.Group>
                             <Button type="submit">Login</Button>
                         </Form>
                     </Row>

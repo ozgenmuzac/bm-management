@@ -53,7 +53,7 @@ export default class MemberList extends Component {
     componentDidMount() {
         this.props.store.getMembers();
     }
-    
+
     @autobind
     onMemberEdit(memberId) {
         this.props.history.push(`/member/${memberId}/`);
