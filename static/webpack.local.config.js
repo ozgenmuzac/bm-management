@@ -12,6 +12,6 @@ config.plugins = config.plugins.concat([
 ]);
 
 config.devtool = 'source-map';
-config.mode = 'development';
 
 module.exports = config;
+

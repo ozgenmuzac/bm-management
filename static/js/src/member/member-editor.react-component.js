@@ -16,11 +16,6 @@ export default class MemberEditor extends Component {
         onCancelCallback: PropTypes.func,
     };
 
-    static defaultProps = {
-        onSubmitCallback: () => {},
-        onCancelCallback: () => {},
-    };
-
     @autobind
     onSubmit() {
         this.props.store.onSubmit().then(() => {

@@ -10,12 +10,14 @@ config.plugins = config.plugins.concat([
             'NODE_ENV': JSON.stringify('production')
         }
     }),
+    new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false,
+        },
+        output: {
+            comments: false,
+        },
+    }),
 ]);
-
-config.optimization = {
-    minimize: false,
-};
-
-config.mode = 'production';
 
 module.exports = config;
