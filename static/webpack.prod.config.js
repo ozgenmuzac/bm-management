@@ -12,10 +12,6 @@ config.plugins = config.plugins.concat([
     }),
 ]);
 
-config.optimization = {
-    minimize: false,
-};
-
 config.mode = 'production';
 
 module.exports = config;
