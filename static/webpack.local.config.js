@@ -14,4 +14,3 @@ config.plugins = config.plugins.concat([
 config.devtool = 'source-map';
 
 module.exports = config;
-
